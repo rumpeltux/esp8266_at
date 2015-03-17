@@ -118,7 +118,7 @@ at_recvTask(os_event_t *events)
         pCmdLine = at_cmdLine;
         atHead[1] = 0x00;
       }
-      else if(temp == '\n') //only get enter
+      else if(temp == '\n' || temp == '\r') //only get enter
       {
         uart0_sendStr("\r\nERROR\r\n");
       }
@@ -126,7 +126,7 @@ at_recvTask(os_event_t *events)
 
     case at_statRecving: //push receive data to cmd line
       *pCmdLine = temp;
-      if(temp == '\n')
+      if(temp == '\n' || temp == '\r')
       {
         system_os_post(at_procTaskPrio, 0, 0);
         pCmdLine++;
@@ -145,7 +145,7 @@ at_recvTask(os_event_t *events)
       break;
 
     case at_statProcess: //process data
-      if(temp == '\n')
+      if(temp == '\n' || temp == '\r')
       {
 //      system_os_post(at_busyTaskPrio, 0, 1);
         uart0_sendStr("\r\nbusy p...\r\n");
@@ -173,7 +173,7 @@ at_recvTask(os_event_t *events)
       break;
 
     case at_statIpSended: //send data
-      if(temp == '\n')
+      if(temp == '\n' || temp == '\r')
       {
 //      system_os_post(at_busyTaskPrio, 0, 2);
         uart0_sendStr("busy s...\r\n");
@@ -232,7 +232,7 @@ at_recvTask(os_event_t *events)
 //      break;
 
     default:
-      if(temp == '\n')
+      if(temp == '\n' || temp == '\r')
       {
       }
       break;
