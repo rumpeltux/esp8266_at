@@ -591,7 +591,12 @@ void ICACHE_FLASH_ATTR
 at_queryCmdCwdhcp(uint8_t id)
 {
 	char temp[32];
-	
+	uint8_t softap_enabled = (wifi_softap_dhcps_status() == DHCP_STARTED);
+	uint8_t station_enabled = (wifi_station_dhcpc_status() == DHCP_STARTED);
+	os_sprintf(temp, "+CWDHCP:STA:%d\r\n+CWDHCP:AP:%d\r\n", station_enabled, softap_enabled);
+	uart0_sendStr(temp);
+
+	at_backOk;
 }
 
 void ICACHE_FLASH_ATTR
