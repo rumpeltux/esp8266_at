@@ -604,12 +604,23 @@ at_setupCmdCwdhcp(uint8_t id, char *pPara)
 {
 	uint8_t mode,opt;
 	int8_t ret = 0;
-
+	
+	if (strlen(pPara) < 4) {
+		//string is too short and reading it
+		//would cause a read into unknown memory
+		at_backError;
+		return;
+	}
 	pPara++;
 	mode = 0;
 	mode = atoi(pPara);
 	pPara ++;
 	pPara = strchr(pPara, ',');
+	if (pPara == 0) {
+		//where is the comma?
+		at_backError;
+		return;
+	}
 	pPara++;
 	opt = atoi(pPara);
 	
