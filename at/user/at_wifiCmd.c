@@ -15,7 +15,10 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include <stdlib.h>
 #include "user_interface.h"
+#include "espmissingincludes.h"
+#include "driver/uart.h"
 #include "at.h"
 #include "at_wifiCmd.h"
 #include "osapi.h"
@@ -242,11 +245,11 @@ at_setupCmdCwlap(uint8_t id, char *pPara)
   }
   else
   {
-    if(os_str2macaddr(bssid, bssidT) == 0)
+    /*if(os_str2macaddr(bssid, bssidT) == 0)
     {
       at_backError;
       return;
-    }
+    }*/
     config.bssid = bssid;
   }
 //  if(*pPara == ',')

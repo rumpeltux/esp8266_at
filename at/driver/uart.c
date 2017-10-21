@@ -15,11 +15,14 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "driver/uart.h"
+
+#include "driver/uart_register.h"
+#include "espmissingincludes.h"
 #include "ets_sys.h"
 #include "osapi.h"
-#include "driver/uart.h"
-#include "osapi.h"
-#include "driver/uart_register.h"
+#include "os_type.h"
+#include "user_interface.h"
 //#include "ssc.h"
 #include "at.h"
 
@@ -100,7 +103,7 @@ uart_config(uint8 uart_no)
  * Parameters   : uint8 TxChar - character to tx
  * Returns      : OK
 *******************************************************************************/
-LOCAL STATUS
+STATUS
 uart_tx_one_char(uint8 uart, uint8 TxChar)
 {
     while (true)

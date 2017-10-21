@@ -16,6 +16,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "c_types.h"
+#include "espmissingincludes.h"
 #include "user_interface.h"
 #include "at_version.h"
 #include "espconn.h"
@@ -50,7 +51,7 @@ static BOOL disAllFlag = FALSE;
 static at_linkConType pLink[at_linkMax];
 static uint8_t sendingID;
 static BOOL serverEn = FALSE;
-static at_linkNum = 0;
+static int at_linkNum = 0;
 
 //static uint8_t repeat_time = 0;
 static uint16_t server_timeover = 180;
@@ -2010,7 +2011,7 @@ at_upDate_discon_cb(void *arg)
 
   os_printf("disconnect\r\n");
 
-  if(system_upgrade_start(upServer) == false)
+  if(1) // system_upgrade_start(upServer) == false)
   {
 //    uart0_sendStr("+CIPUPDATE:0/r/n");
     at_backError;

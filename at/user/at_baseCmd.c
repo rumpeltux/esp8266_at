@@ -16,12 +16,14 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <stdlib.h>
+#include "espmissingincludes.h"
 #include "osapi.h"
 #include "c_types.h"
 #include "at.h"
 #include "at_baseCmd.h"
 #include "user_interface.h"
 #include "at_version.h"
+#include "driver/uart.h"
 #include "driver/uart_register.h"
 
 /** @defgroup AT_BASECMD_Functions

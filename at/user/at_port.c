@@ -16,6 +16,7 @@
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "at.h"
+#include "espmissingincludes.h"
 #include "user_interface.h"
 #include "osapi.h"
 #include "driver/uart.h"
@@ -98,8 +99,8 @@ at_recvTask(os_event_t *events)
       temp = READ_PERI_REG(UART_FIFO(UART0)) & 0xFF;
       if((temp != '\n') && (echoFlag))
       {
-        uart_tx_one_char(temp); //display back
-//        uart_tx_one_char(UART0, temp);
+//        uart_tx_one_char(temp); //display back
+        uart_tx_one_char(UART0, temp);
       }
     }
 //    if((at_state != at_statIpTraning) && (temp != '\n') && (echoFlag))

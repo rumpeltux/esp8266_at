@@ -15,8 +15,10 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
+#include "espmissingincludes.h"
 #include "ets_sys.h"
 #include "driver/uart.h"
+#include "user_interface.h"
 #include "osapi.h"
 #include "at.h"
 
